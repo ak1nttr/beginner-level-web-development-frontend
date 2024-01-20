@@ -14,17 +14,27 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import {Link} from "react-router-dom";
+import FixedContainer from "../fixedContainer";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
+})(({ theme}) => ({
   marginLeft: 'auto',
   transition: theme.transitions.create('transform', {
     duration: theme.transitions.duration.shortest,
   }),
+
 }));
+const linkStyle = {
+    textDecoration: 'none',
+    color: 'white',
+    borderBottom: 'none',
+    boxShadow:'none',
+    textAlign:"left"
+
+};
 
 
   
@@ -36,15 +46,22 @@ function Post(props){
       setExpanded(!expanded);
     };
   
-    const {title , text} = props;
+    const {title , text, userName , userId} = props;
+
+
+
     return (
-        <div className="postContainer">
+
+
+        <div>
              <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
+          <Link to={{ pathname: '/users/' + userId}} style={linkStyle} >
+          <Avatar sx={{ bgcolor: red[400] }} aria-label="recipe">
+              {userName && userName.charAt(0).toUpperCase()}
           </Avatar>
+            </Link>
         }
         action={
           <IconButton aria-label="settings">
@@ -52,7 +69,7 @@ function Post(props){
           </IconButton>
         }
         title={title}
-        subheader="September 14, 2016"
+        subheader="header"
       />
       <CardMedia
         component="img"
@@ -87,11 +104,10 @@ function Post(props){
         </CardContent>
       </Collapse>
     </Card>
-            {title} - 
-             {text}
+
         </div>
     )
 
-};
+}
 
 export default Post;

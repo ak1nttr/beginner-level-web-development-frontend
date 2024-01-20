@@ -8,7 +8,14 @@ import Container from '@mui/material/Container';
     <React.Fragment>
       <CssBaseline />
       <Container fixed>
-        <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' }} />
+          <Box sx={{ bgcolor: 'rgba(78,114,88,0.7)'
+              , height: '100%'
+              , position: 'fixed'
+              , width: '75%'
+              , zIndex: -   1
+          }} />
+
+
       </Container>
     </React.Fragment>
   );

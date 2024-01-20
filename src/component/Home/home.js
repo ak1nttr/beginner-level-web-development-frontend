@@ -3,6 +3,7 @@ import Post from '../Post/post';
 import {useState, useEffect} from "react";
 import "./home.scss";
 import { Container } from '@mui/material';
+import FixedContainer from "../fixedContainer";
 
 
 
@@ -36,20 +37,26 @@ function Home() {
             Error!
         </div>
     }else if (!isLoaded){
-       return <div>   
-            Loading... 
+       return <div>
+
+               Loading...
+
+
         </div>
     }else {
         return (
-            
-        <Container fixedContainer>    
+
+        <Container>
             {postList.map(post => (
 
-                <Post title = {post.title} text = {post.text}> </Post>    
-            
+                <Post userName = {post.userName}
+                      userId = {post.userId}
+                      title = {post.title}
+                      text = {post.text}> </Post>
+
             ))}
         </Container>
-        )
+                )
     }
         
 }
